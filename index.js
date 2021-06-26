@@ -2,37 +2,37 @@ let app = {
     articles:[
     {
     "title": "Le lion de Némée",
-    "img": "../img/lion.jpg",
+    "img": "../media/lion.jpg",
     "img_alt": "Le lion de Némée",
     "text": "Étouffer le lion de Némée à la peau impénétrable, et rapporter sa dépouille."
     },
     {
     "title": "L'hydre de Lerne",
-    "img": "../img/hydre.jpg",
+    "img": "../media/hydre.jpg",
     "img_alt": "L'hydre de Lerne",
     "text": "Tuer l'hydre de Lerne, dont les têtes tranchées repoussaient sans cesse."
     },
     {
     "title": "La biche de Cérynie",
-    "img": "../img/biche.jpg",
+    "img": "../media/biche.jpg",
     "img_alt": "La biche de Cérynie",
     "text": "Capturer la biche de Cérynie aux sabots d'airain et aux bois d'or, créature sacrée d'Artémis."
     },
     {
     "title": "Le sanglier d'Érymanthe",
-    "img": "../img/sanglier.jpg",
+    "img": "../media/sanglier.jpg",
     "img_alt": "Le sanglier d'Érymanthe",
     "text": "Ramener vivant l'énorme sanglier d'Érymanthe."
     },
     {
     "title": "Les écuries d'Augias",
-    "img": "../img/ecuries.jpg",
+    "img": "../media/ecuries.jpg",
     "img_alt": "Les écuries d'Augias",
     "text": "Nettoyer les écuries d'Augias, qui ne l'avaient jamais été, car elles étaient si grandes que personne n'avait jamais eu le courage de le faire."
     },
     {
     "title": "Les oiseaux du lac Stymphale",
-    "img": "../img/oiseaux.jpg",
+    "img": "../media/oiseaux.jpg",
     "img_alt": "Les oiseaux du lac Stymphale",
     "text": "Tuer les oiseaux du lac Stymphale aux plumes d'airain."
     }
@@ -56,11 +56,15 @@ let app = {
      * function that displays the articles
      */
     displayArticle: function(){
-        const newArticles = document.querySelector('.card');
+        const newArticles = document.querySelector('.articles-container');
         for(let i=0; i<app.articles.length;i++){
+            const myArticle = document.createElement('article');
+            myArticle.classList.add('card')
+            newArticles.appendChild(myArticle);
+
             const myHeader= document.createElement('header')
             myHeader.classList.add('card-header');
-            newArticles.appendChild(myHeader);
+            myArticle.appendChild(myHeader);
 
             const myImg= document.createElement('img');
             myImg.classList.add('picture');
@@ -77,7 +81,7 @@ let app = {
 
             const mySection=document.createElement('section');
             mySection.classList.add('card-content');
-            newArticles.appendChild(mySection);
+            myArticle.appendChild(mySection);
 
             const myParaph=document.createElement('p');
             myParaph.textContent = app.articles[i].text;
@@ -86,7 +90,7 @@ let app = {
 
             const myFooter=document.createElement('footer');
             myFooter.classList.add('card-footer');
-            newArticles.appendChild(myFooter);
+            myArticle.appendChild(myFooter);
 
             const linkRead=document.createElement('a');
             linkRead.classList.add('btn');

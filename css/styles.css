@@ -215,7 +215,12 @@ body {
     text-align: center;
     color: #aaa;
 }
-
+.video {
+    width:30rem;
+    bottom: 0;
+    right: 3.938rem;
+    position: fixed;
+}
 @media (max-width: 1200px){
     .content-focus, .articles-container {
         display:block;
@@ -234,7 +239,7 @@ body {
     .content-picture, .card {
         width: auto;
     }
-
+    
 }
 
 @media (max-width: 900px){
@@ -295,5 +300,8 @@ body {
     }
     .btn {
         margin-bottom: 1rem;
+    }
+    .video {
+        width:15rem;
     }
 }
