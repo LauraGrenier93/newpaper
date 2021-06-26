@@ -277,3 +277,23 @@ body {
         margin-bottom: 0;
     }
 }
+
+@media(max-width:740px){
+    .nav-links {
+        display:flex;
+        flex-direction:column;
+    }
+    .page {
+        margin-top:9rem;
+    }
+    .nav-item {
+        width:100%;
+    }
+    .card-footer {
+        display: flex;
+        flex-direction: column;
+    }
+    .btn {
+        margin-bottom: 1rem;
+    }
+}

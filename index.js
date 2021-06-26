@@ -99,9 +99,6 @@ let app = {
             linkLike.setAttribute('href', '#');
             linkLike.textContent ='J\'aime';
             myFooter.appendChild(linkLike);
-
-            console.log('newArticles', newArticles);
-            console.log(app.articles[i]);
         }
     },
     /**
@@ -115,7 +112,6 @@ let app = {
           arrayOls[0].appendChild(myLi);
         }
         )
-        console.log(arrayOls);
     },
 
         init: function () {
