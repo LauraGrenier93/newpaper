@@ -6,7 +6,17 @@ body {
 * {
     box-sizing: border-box;    
 }
-
+.button {
+    height:100px;
+    width:100;
+    position:fixed;
+    right:6px;
+    bottom:20px;
+    cursor:pointer;
+}
+.icone {
+    width:50px;
+}
 .container {
     width: 90%;
     margin: auto;
@@ -221,6 +231,7 @@ body {
     bottom: 0;
     right: 3.938rem;
     position: fixed;
+    z-index:50;
 }
 @media (max-width: 1200px){
     .content-focus, .articles-container {

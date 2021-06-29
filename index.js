@@ -12,9 +12,9 @@ let app = {
         throw error;
       } else {
         app.articles = await response.json();
-        console.log('articles', app.articles)
         app.displayArticle();
         app.displayWorks();
+        app.upPage();
       }
     } catch (error) {
       console.error(error);
@@ -84,6 +84,16 @@ let app = {
           arrayOls[0].appendChild(myLi);
         }
         )
+    },
+    upPage:function(){
+      const myButtonUp =document.querySelector('.button');
+      myButtonUp.addEventListener('click', ()=> {
+        window.scrollTo({
+          top:0,
+          left:0,
+          behavior:"smooth",
+        })
+      })
     },
 
         init: function () {
