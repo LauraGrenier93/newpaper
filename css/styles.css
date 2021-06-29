@@ -1,10 +1,13 @@
+* {
+    box-sizing: border-box;    
+}
 body {
     background:#eee;
     font-family: 'Asap', sans-serif; 
 }
-
-* {
-    box-sizing: border-box;    
+img{
+    width:600px;
+    height:350px;
 }
 .button {
     height:100px;
@@ -16,6 +19,7 @@ body {
 }
 .icone {
     width:50px;
+    height:50px;
 }
 .container {
     width: 90%;
@@ -222,10 +226,10 @@ body {
 }
 
 .footer {
-    background: #111;
+    background: #ddd;
     padding: 4rem 2rem;
     text-align: center;
-    color: #aaa;
+    color: black;
 }
 .container-video{
     position: fixed;
@@ -243,6 +247,8 @@ body {
 .icone-chevron{
     width:2.5rem;
     transform:rotate(180deg);
+    width:30px;
+    height:30px;
 }
 .hidden {
     bottom:-270px;
