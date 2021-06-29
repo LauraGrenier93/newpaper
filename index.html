@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="un site sur les 12 travaux d'hercule avec de belle image.">
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/pub.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/pub.css">
+    <link rel="stylesheet" href="./css/styles.css">
 
     <script src="index.js" charset="utf-8"></script>
     <title>Les 12 travaux d'Hercule</title>
@@ -36,7 +36,7 @@
         </header>
         <main class="page">
             <div class="button">
-                <img src= "media/flèche-haut.png" class="icone">
+                <img src= "media/fleche-haut.png" class="icone" alt="flèche qui remonte vers le haut">
             </div>
             <div>
                 <div class= "contener_slideshow">
@@ -53,7 +53,7 @@
                         <h2 class="content-title content-title--sub">Tout savoir sur les exploits d'un simple mortel.</h2>
                     </div>
                     <figure class="content-picture rounded">
-                        <img class="picture" src="/media/taureau.jpg" alt="Le taureau crétois de Minos" />
+                        <img class="picture" src="./media/taureau.jpg" alt="Le taureau crétois de Minos" />
                         <figcaption class="picture-desc">Le taureau crétois de Minos</figcaption>
                     </figure>
                 </div>
@@ -72,16 +72,22 @@
                 <div class="articles-container">                   
                 </div>
             </section>
-            <video controls class="video">
+            <div class="container-video">
+                <div class="button-video">
+                    <img src= "media/chevron.png" class="icone-chevron" alt="chevron qui ouvre ou ferme la vidéo aurore Boréale">
+                </div>
+                <video controls class="video" alt="vidéo montrant une aurore boréale">
 
-                <source src="/media/Aurora.webm"
-                        type="video/webm">
-            
-                <source src="/media/Aurora.mp4"
-                        type="video/mp4">
-            
-                Sorry, your browser doesn't support embedded videos.
-            </video>
+                    <source src="/media/Aurora.webm"
+                            type="video/webm">
+                
+                    <source src="/media/Aurora.mp4"
+                            type="video/mp4">
+                
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            </div>
+            </div>
         </main>
         <footer class="footer">
             2019 &copy; Tous droits réservés

@@ -15,6 +15,7 @@ let app = {
         app.displayArticle();
         app.displayWorks();
         app.upPage();
+        app.showVideoOrHiden();
       }
     } catch (error) {
       console.error(error);
@@ -37,7 +38,7 @@ let app = {
             const myImage= document.createElement('img');
             myImage.classList.add('picture');
             myImage.classList.add('rounded');
-            myImage.setAttribute('src', app.articles[i].imageUrl);
+            myImage.setAttribute('src', '.'+ app.articles[i].imageUrl);
             myImage.setAttribute('alt', app.articles[i].imgAlt);
             myHeader.appendChild(myImage);
 
@@ -65,12 +66,6 @@ let app = {
             linkRead.setAttribute('href', '#');
             linkRead.textContent = 'Lire la suite';
             myFooter.appendChild(linkRead);
-
-            const linkLike=document.createElement('a');
-            linkLike.classList.add('btn');
-            linkLike.setAttribute('href', '#');
-            linkLike.textContent ='J\'aime';
-            myFooter.appendChild(linkLike);
         }
     },
     /**
@@ -85,6 +80,9 @@ let app = {
         }
         )
     },
+    /**
+     * go to top of page
+     */
     upPage:function(){
       const myButtonUp =document.querySelector('.button');
       myButtonUp.addEventListener('click', ()=> {
@@ -95,10 +93,22 @@ let app = {
         })
       })
     },
+    /**
+   * video disappearing
+   */
+    showVideoOrHiden:function(){
+    const myVideo =document.querySelector('.container-video');
+    const iconeChevron=document.querySelector('.button-video');
+    iconeChevron.addEventListener('click', ()=>{
+        myVideo.classList.toggle("hidden");
+        iconeChevron.classList.toggle("chevron-up")
+    })
+
+  },
 
         init: function () {
             app.getListsFromAPI();
     },
-};
 
-document.addEventListener('DOMContentLoaded', app.init)
+};
+document.addEventListener('DOMContentLoaded', app.init);
