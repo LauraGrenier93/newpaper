@@ -1,57 +1,25 @@
 let app = {
-    articles:[
-    {
-    "title": "Le lion de Némée",
-    "img": "../media/lion.jpg",
-    "img_alt": "Le lion de Némée",
-    "text": "Étouffer le lion de Némée à la peau impénétrable, et rapporter sa dépouille."
-    },
-    {
-    "title": "L'hydre de Lerne",
-    "img": "../media/hydre.jpg",
-    "img_alt": "L'hydre de Lerne",
-    "text": "Tuer l'hydre de Lerne, dont les têtes tranchées repoussaient sans cesse."
-    },
-    {
-    "title": "La biche de Cérynie",
-    "img": "../media/biche.jpg",
-    "img_alt": "La biche de Cérynie",
-    "text": "Capturer la biche de Cérynie aux sabots d'airain et aux bois d'or, créature sacrée d'Artémis."
-    },
-    {
-    "title": "Le sanglier d'Érymanthe",
-    "img": "../media/sanglier.jpg",
-    "img_alt": "Le sanglier d'Érymanthe",
-    "text": "Ramener vivant l'énorme sanglier d'Érymanthe."
-    },
-    {
-    "title": "Les écuries d'Augias",
-    "img": "../media/ecuries.jpg",
-    "img_alt": "Les écuries d'Augias",
-    "text": "Nettoyer les écuries d'Augias, qui ne l'avaient jamais été, car elles étaient si grandes que personne n'avait jamais eu le courage de le faire."
-    },
-    {
-    "title": "Les oiseaux du lac Stymphale",
-    "img": "../media/oiseaux.jpg",
-    "img_alt": "Les oiseaux du lac Stymphale",
-    "text": "Tuer les oiseaux du lac Stymphale aux plumes d'airain."
+    articles:[],
+    base_url: "http://localhost:8080/",
+     /**
+      * Data recovery features
+      */
+  getListsFromAPI: async () => {
+    try {
+      let response = await fetch(app.base_url);
+      if (response.status !== 200) {
+        let error = await response.json();
+        throw error;
+      } else {
+        app.articles = await response.json();
+        console.log('articles', app.articles)
+        app.displayArticle();
+        app.displayWorks();
+      }
+    } catch (error) {
+      console.error(error);
     }
-    ],
-    works:[
-    "Étouffer le lion de Némée à la peau impénétrable, et rapporter sa dépouille.",
-    "Tuer l'hydre de Lerne, dont les têtes tranchées repoussaient sans cesse.",
-    "Capturer la biche de Cérynie aux sabots d'airain et aux bois d'or, créature sacrée d'Artémis.",
-    "Ramener vivant l'énorme sanglier d'Érymanthe.",
-    "Nettoyer les écuries d'Augias, qui ne l'avaient jamais été, car elles étaient si grandes que personne n'avait jamais eu le courage de le faire.",
-    "Tuer les oiseaux du lac Stymphale aux plumes d'airain.",
-    "Dompter le taureau crétois de Minos, que celui-ci n'avait pas voulu sacrifier à Poséidon.",
-    "Capturer les cavales de Diomède (juments mangeuses d'hommes).",
-    "Rapporter la ceinture d'Hippolyte, fille d'Arès et reine des Amazones.",
-    "Rapporter les pommes d'or du jardin des Hespérides, que gardait Ladon.",
-    "Vaincre le géant aux trois corps Géryon, et voler son troupeau de bœufs.",
-    "Descendre aux Enfers et enchaîner Cerbère, le chien aux trois têtes puis le présenter à Eurysthée pour témoigner de son succès."
-    ],
-
+  },
     /**
      * function that displays the articles
      */
@@ -66,12 +34,12 @@ let app = {
             myHeader.classList.add('card-header');
             myArticle.appendChild(myHeader);
 
-            const myImg= document.createElement('img');
-            myImg.classList.add('picture');
-            myImg.classList.add('rounded');
-            myImg.setAttribute('src', app.articles[i].img);
-            myImg.setAttribute('alt', app.articles[i].img_alt);
-            myHeader.appendChild(myImg);
+            const myImage= document.createElement('img');
+            myImage.classList.add('picture');
+            myImage.classList.add('rounded');
+            myImage.setAttribute('src', app.articles[i].imageUrl);
+            myImage.setAttribute('alt', app.articles[i].imgAlt);
+            myHeader.appendChild(myImage);
 
             const myTitle=document.createElement('h3');
             myTitle.classList.add('card-title');
@@ -84,7 +52,7 @@ let app = {
             myArticle.appendChild(mySection);
 
             const myParaph=document.createElement('p');
-            myParaph.textContent = app.articles[i].text;
+            myParaph.textContent = app.articles[i].description;
             mySection.appendChild(myParaph);
 
 
@@ -110,17 +78,16 @@ let app = {
      */
     displayWorks:function(){
         const arrayOls=document.getElementsByTagName('ol');
-        app.works.forEach(work=> {
+        app.articles.forEach(article=> {
           const myLi=document.createElement('li');
-          myLi.textContent = work;
+          myLi.textContent = article.description;
           arrayOls[0].appendChild(myLi);
         }
         )
     },
 
         init: function () {
-        app.displayArticle();
-        app.displayWorks();
+            app.getListsFromAPI();
     },
 };
 
