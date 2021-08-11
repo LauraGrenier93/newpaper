@@ -1,5 +1,22 @@
 let app = {
-    message:'',
+
+  /**
+   * adds a listener to reset the search
+   */
+   bindResetSearch: function(){
+    let buttonElements = document.querySelector('.search-button');
+    buttonElements.addEventListener('click', handle.handleResetSearch);
+  },
+
+  /**
+   * adds a listener on the input
+   */
+   bindMenu: function(){
+    let buttonElements = document.querySelectorAll('.nav-item-link');
+    for(element of buttonElements){
+      element.addEventListener('click', handle.handleMenu);
+    }  
+  },
 
   /**
    * adds a listener on the input
@@ -7,6 +24,24 @@ let app = {
   bindSearch: function(){
     let seachInputElement = document.querySelector('.search');
     seachInputElement.addEventListener('submit', handle.handleSearch);
+  },
+
+  /**
+   * reset the message info
+   */
+     resetMessage: function(message){
+      let newMessageElements = document.querySelectorAll('.info');
+      newMessageElements.forEach(element => element.textContent = message);
+    },
+    
+  /**
+   * added css to activate the menu buttons
+   */
+  initActiveButtonMenu:function(){
+    let buttonElements = document.querySelectorAll('.nav-item-link');
+    for(element of buttonElements){
+      element.classList.remove('nav-item-link--current-page');
+    }  
   },
 
   /**
@@ -40,6 +75,7 @@ let app = {
           app.upPage();
           app.showVideoOrHiden();
           app.bindSearch();
+          app.bindMenu();
     },
 
 };

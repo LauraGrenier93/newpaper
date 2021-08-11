@@ -1,20 +1,6 @@
 let article = {
     articles:[],
-    wordFromArticles:[],
     arraySearchArticle:[],
-
-    /**
-     * initialization of an array of an article
-     */
-    arrayArticle: function(){
-        article.articles.forEach((oneArticle, index) => {
-        let wordFromTitle = oneArticle.title.toLowerCase().split(' ');
-        let wordFromDescription = oneArticle.description.toLowerCase().split(' ');
-        article.wordFromArticles[index] = new Set(wordFromTitle.concat(wordFromDescription));
-        });
-        
-    },
-
     /**
      * function that displays the articles
      */
@@ -74,23 +60,20 @@ let article = {
         }
     },
 
-    displaySearchArticle: function(articles){
-        if(articles.length === 0){
-          app.message = "il n'y a pas d'article en rapport avec votre recherche";
-          let newMessageElement = document.querySelector('.info');
-          newMessageElement.textContent = app.message;
-        } else {
-          let allArticleElements = document.querySelectorAll('.card');
-          for(let i=0; i < allArticleElements.length; i++) {
-            for(let j=0; j<articles.length; j++){
-              if(articles[j]._id === allArticleElements[i].id){
-                allArticleElements[i].classList.remove('hide');
-                article.arraySearchArticle=[];
-              }
-            } 
-          }
+  /**
+   * method that diplay article
+   */
+  displaySearchArticle: function(articles){
+        let allArticleElements = document.querySelectorAll('.card');
+        for(let i=0; i < allArticleElements.length; i++) {
+          for(let j=0; j<articles.length; j++){
+            if(articles[j]._id === allArticleElements[i].id){
+              allArticleElements[i].classList.remove('hide');
+              article.arraySearchArticle=[];
+            }
+          } 
         }
-      },
+    },
 
         /**
      * function that displays the 12 works of Heracles

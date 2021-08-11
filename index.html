@@ -16,15 +16,13 @@
         <header class="header">
             <form class="search">
                 <input class="search-input" placeholder="Rechercher" aria-label="Rechercher parmi le contenu du site" type="search"/>
+                <div class="search-button hide" href="#">Initialiser</div>
             </form>
             <nav class="nav">
                 <h2 class="title">Navigation</h2>
                 <ul class="nav-links">
                     <li class="nav-item">
                         <a class="nav-item-link nav-item-link--current-page" href="#">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item-link" href="#presentation">Présentation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-item-link" href="#articles">Articles</a>
@@ -37,8 +35,8 @@
                 <img src= "media/fleche-haut.png" class="icone" alt="flèche qui remonte vers le haut">
             </div>
             <div>
-                <div class= "contener_slideshow">
-                <div class= "contener_slide">
+                <div class= "container_slideshow">
+                <div class= "container_slide">
                     <div class= "slid_1"><a href= "#"><img src= "media/breakfast.png" alt="lien vers Reallygreatsite.com"></a></div>
                     <div class= "slid_2"><a href= "#"><img src= "media/tresande.png" alt="lien vers BurgerCountry.com"></a></div>
                     <div class= "slid_3"><a href= "#"><img src= "media/pharmacy.png" alt="lien vers BellerPharmacy.com"></a></div>
@@ -49,7 +47,7 @@
                 <div class="content-focus">
                     <div class="content-titles">
                         <h1 class="content-title content-title--main">Les 12 travaux d'Hercule</h1>
-                        <h2 id="presentation" class="content-title content-title--sub">Tout savoir sur les exploits d'un simple mortel.</h2>
+                        <h2 class="content-title content-title--sub">Tout savoir sur les exploits d'un simple mortel.</h2>
                     </div>
                     <figure class="content-picture rounded">
                         <img class="picture" src="./media/taureau.jpg" alt="Le taureau crétois de Minos" />
@@ -68,7 +66,8 @@
                 <header>
                     <h2 id="articles" class="title">Ses premiers travaux</h2>
                 </header>
-                <div class="articles-container">                   
+                <div class="articles-container">
+                    <p class="info"></p>                  
                 </div>
             </section>
             <div class="container-video">

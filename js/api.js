@@ -12,7 +12,6 @@ let api = {
         throw error;
       } else {
         article.articles = await response.json();
-        article.arrayArticle();
         article.displayWorks();
         article.displayArticle(article.articles);
       }
