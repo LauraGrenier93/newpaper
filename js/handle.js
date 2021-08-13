@@ -10,6 +10,14 @@ let handle = {
         articleToDisplay.classList.add('one-article');
         let pictureToDisplay = articleToDisplay.querySelector('.picture');
         pictureToDisplay.classList.add('picture-float');
+        for(let i=0; i<article.articles.length; i++){
+            if(articleToDisplay.id === article.articles[i]['_id']){
+                let  paraphToDisplay = articleToDisplay.querySelector('p');
+                let regex = new RegExp('\\. I', 'g');
+                let description = article.articles[i].description.replace(regex, '.<br><br>I');;                
+                paraphToDisplay.innerHTML = description;
+                }
+        }
     },
 
     /**
@@ -17,6 +25,8 @@ let handle = {
      */
     handleResetSearch: function(){
         app.resetMessage('');
+        document.querySelector('.search-input').value = '';
+        article.hiddenArticle();
         article.displaySearchArticle(article.articles);
     },
 

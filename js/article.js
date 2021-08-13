@@ -20,7 +20,7 @@ let article = {
             myImage.classList.add('picture');
             myImage.classList.add('rounded');
             myImage.setAttribute('src', '.'+ articles[i].imageUrl);
-            myImage.setAttribute('alt', articles[i].imgAlt);
+            myImage.setAttribute('alt', articles[i].imageAlt);
             myHeader.appendChild(myImage);
 
             const myTitle=document.createElement('h3');
@@ -34,7 +34,7 @@ let article = {
             myArticle.appendChild(mySection);
 
             const myParaph=document.createElement('p');
-            myParaph.textContent = articles[i].description;
+            myParaph.textContent = articles[i].description.substring(0,130) + '...';
             mySection.appendChild(myParaph);
 
 
@@ -60,6 +60,7 @@ let article = {
             classOneArticle = allArticleElements[i].className = "card";
             allArticleElements[i].querySelector('.picture').className ="picture rounded";
             allArticleElements[i].querySelector('.btn').className="btn";
+            allArticleElements[i].querySelector('p').textContent = article.articles[i].description.substring(0,130) + '...';
             allArticleElements[i].classList.add('hide');
         }
     },
@@ -86,7 +87,7 @@ let article = {
     const arrayOls=document.getElementsByTagName('ol');
     article.articles.forEach(article=> {
       const myLi=document.createElement('li');
-      myLi.textContent = article.description;
+      myLi.textContent = article.title;
       arrayOls[0].appendChild(myLi);
     }
     )
