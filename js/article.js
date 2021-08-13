@@ -1,12 +1,14 @@
 let article = {
     articles:[],
     arraySearchArticle:[],
+    descriptionMinimum:[],
     /**
      * function that displays the articles
      */
     displayArticles: function(articles){
         const newArticles = document.querySelector('.articles-container');
         for(let i=0; i<articles.length;i++){
+          article.descriptionMinimum[i] =article.articles[i].description.substring(0,130) + '...';
             const myArticle = document.createElement('article');
             myArticle.setAttribute('id',articles[i]['_id']);
             myArticle.setAttribute('class','card');
@@ -34,7 +36,7 @@ let article = {
             myArticle.appendChild(mySection);
 
             const myParaph=document.createElement('p');
-            myParaph.textContent = articles[i].description.substring(0,130) + '...';
+            myParaph.textContent = article.descriptionMinimum[i];
             mySection.appendChild(myParaph);
 
 
@@ -60,7 +62,7 @@ let article = {
             classOneArticle = allArticleElements[i].className = "card";
             allArticleElements[i].querySelector('.picture').className ="picture rounded";
             allArticleElements[i].querySelector('.btn').className="btn";
-            allArticleElements[i].querySelector('p').textContent = article.articles[i].description.substring(0,130) + '...';
+            allArticleElements[i].querySelector('p').textContent = article.articles[i].title;
             allArticleElements[i].classList.add('hide');
         }
     },
@@ -75,6 +77,8 @@ let article = {
             if(articles[j]._id === allArticleElements[i].id){
               allArticleElements[i].classList.remove('hide');
               article.arraySearchArticle=[];
+              allArticleElements[i].querySelector('.card-title').innerHTML= articles[j].title;
+              allArticleElements[i].querySelector('p').innerHTML=  article.descriptionMinimum[j];
             }
           } 
         }

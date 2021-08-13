@@ -55,6 +55,20 @@ let app = {
   },
 
   /**
+   * method that resets text highlighting
+   */
+  resetTextHighlighting: function(){
+    let regex1 = new RegExp('<span style="background-color:#f39c12;">', 'gi');
+    let regex2 = new RegExp('</span>', 'gi');
+        for(let j=0; j<article.articles.length; j++){
+            article.articles[j].title = article.articles[j].title.replace(regex1, '');
+            article.articles[j].title = article.articles[j].title.replace(regex2, '');
+            article.descriptionMinimum[j] = article.descriptionMinimum[j].replace(regex1, '');
+            article.descriptionMinimum[j] = article.descriptionMinimum[j].replace(regex2, '');
+        }
+  },
+
+  /**
    * go to top of page
    */
   upPage:function(){

@@ -13,9 +13,8 @@ let handle = {
         for(let i=0; i<article.articles.length; i++){
             if(articleToDisplay.id === article.articles[i]['_id']){
                 let  paraphToDisplay = articleToDisplay.querySelector('p');
-                let regex = new RegExp('\\. I', 'g');
-                let description = article.articles[i].description.replace(regex, '.<br><br>I');;                
-                paraphToDisplay.innerHTML = description;
+                let regex = new RegExp('\\. I', 'g'); 
+                paraphToDisplay.innerHTML = article.articles[i].description.replace(regex, '.<br><br>I');
                 }
         }
     },
@@ -26,6 +25,7 @@ let handle = {
     handleResetSearch: function(){
         app.resetMessage('');
         document.querySelector('.search-input').value = '';
+        app.resetTextHighlighting();
         article.hiddenArticle();
         article.displaySearchArticle(article.articles);
     },
@@ -35,13 +35,17 @@ let handle = {
     */
     handleSearch: function(event){
         event.preventDefault();
+        app.resetTextHighlighting();
         let valueField = document.querySelector('.search-input').value.trim();
         let wordFromInput = valueField.toLowerCase();
         let regex = new RegExp(wordFromInput,"gi");
         for(let i = 0; i < article.articles.length; i++) {
                 let testTitleArticle = regex.test(article.articles[i].title);
-                let testDescriptionArticle = regex.test(article.articles[i].description);
-                if((testTitleArticle ||  testDescriptionArticle ) && valueField != ''){
+                let testDescriptionArticle = regex.test(article.descriptionMinimum[i]);
+                if((testTitleArticle ||  testDescriptionArticle ) && valueField != ''){ 
+                    let regex = new RegExp(wordFromInput + '(?!([^<]+)?<)', 'gi');  
+                    article.articles[i].title = article.articles[i].title.replace(regex, '<span style="background-color:#f39c12;">'+ wordFromInput +'</span>');
+                    article.descriptionMinimum[i] = article.descriptionMinimum[i].replace(regex, '<span style="background-color:#f39c12;">'+ wordFromInput +'</span>');
                     article.arraySearchArticle.push(article.articles[i]);
                 }
             };
@@ -55,12 +59,13 @@ let handle = {
         article.displaySearchArticle(article.arraySearchArticle);
         document.querySelector('.search-button').classList.remove('hide');
    },
-   
+
     /**
     * method that adds css on Menu
     */
      handleMenu: function(event){
        app.initActiveButtonMenu();
+       app.resetMessage();
        buttonClicked = event.target;
        buttonClicked.classList.add('nav-item-link--current-page');
        article. hiddenArticle();
