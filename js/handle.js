@@ -1,11 +1,23 @@
 
 let handle = {
+    handleDisplayArticle:function(event){
+        article.hiddenArticle();
+        document.querySelector('.content').classList.add('hide');
+        let buttonClicked = event.target;
+        buttonClicked.classList.add('hide');
+        let articleToDisplay = buttonClicked.closest('.card');
+        articleToDisplay.classList.remove('hide');
+        articleToDisplay.classList.add('one-article');
+        let pictureToDisplay = articleToDisplay.querySelector('.picture');
+        pictureToDisplay.classList.add('picture-float');
+    },
+
     /**
      * method that run to resets the search
      */
     handleResetSearch: function(){
         app.resetMessage('');
-        article.displaySearchArticle(article.articles)
+        article.displaySearchArticle(article.articles);
     },
 
     /**
@@ -15,7 +27,7 @@ let handle = {
         event.preventDefault();
         let valueField = document.querySelector('.search-input').value.trim();
         let wordFromInput = valueField.toLowerCase();
-        let regex = new RegExp(wordFromInput,"g");
+        let regex = new RegExp(wordFromInput,"gi");
         console.log(regex);
         for(let i = 0; i < article.articles.length; i++) {
                 let testTitleArticle = regex.test(article.articles[i].title);
@@ -40,6 +52,8 @@ let handle = {
      handleMenu: function(event){
        app.initActiveButtonMenu();
        buttonClicked = event.target;
-       buttonClicked.classList.add('nav-item-link--current-page')
+       buttonClicked.classList.add('nav-item-link--current-page');
+       article. hiddenArticle();
+       article.displaySearchArticle(article.articles);
    },
 }

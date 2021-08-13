@@ -3,13 +3,23 @@ let app = {
   /**
    * adds a listener to reset the search
    */
+   bindDisplayArticle: function(){
+    let buttonElements = document.querySelectorAll('.btn');
+    for(element of buttonElements){
+      element.addEventListener('click', handle.handleDisplayArticle);
+    }
+  },
+
+  /**
+   * adds a listener to reset the search
+   */
    bindResetSearch: function(){
     let buttonElements = document.querySelector('.search-button');
     buttonElements.addEventListener('click', handle.handleResetSearch);
   },
 
   /**
-   * adds a listener on the input
+   * adds a listener on the menu buttons
    */
    bindMenu: function(){
     let buttonElements = document.querySelectorAll('.nav-item-link');

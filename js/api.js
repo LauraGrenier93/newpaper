@@ -13,7 +13,8 @@ let api = {
       } else {
         article.articles = await response.json();
         article.displayWorks();
-        article.displayArticle(article.articles);
+        article.displayArticles(article.articles);
+        app.bindDisplayArticle();
       }
     } catch (error) {
       console.error(error);

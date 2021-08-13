@@ -4,7 +4,7 @@ let article = {
     /**
      * function that displays the articles
      */
-    displayArticle: function(articles){
+    displayArticles: function(articles){
         const newArticles = document.querySelector('.articles-container');
         for(let i=0; i<articles.length;i++){
             const myArticle = document.createElement('article');
@@ -55,7 +55,11 @@ let article = {
      */
     hiddenArticle:function(){
         let allArticleElements = document.querySelectorAll('.card');
+        document.querySelector('.content').classList.remove('hide');
         for(let i=0; i < allArticleElements.length; i++) {
+            classOneArticle = allArticleElements[i].className = "card";
+            allArticleElements[i].querySelector('.picture').className ="picture rounded";
+            allArticleElements[i].querySelector('.btn').className="btn";
             allArticleElements[i].classList.add('hide');
         }
     },
