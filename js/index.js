@@ -1,7 +1,7 @@
 let app = {
 
   /**
-   * adds a listener to reset the search
+   * adds a listener one article
    */
    bindDisplayArticle: function(){
     let buttonElements = document.querySelectorAll('.btn');

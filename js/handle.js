@@ -38,7 +38,6 @@ let handle = {
         let valueField = document.querySelector('.search-input').value.trim();
         let wordFromInput = valueField.toLowerCase();
         let regex = new RegExp(wordFromInput,"gi");
-        console.log(regex);
         for(let i = 0; i < article.articles.length; i++) {
                 let testTitleArticle = regex.test(article.articles[i].title);
                 let testDescriptionArticle = regex.test(article.articles[i].description);
@@ -52,6 +51,7 @@ let handle = {
         }
         app.bindResetSearch();
         article.hiddenArticle();
+        document.querySelector('.content').classList.add('hide');
         article.displaySearchArticle(article.arraySearchArticle);
         document.querySelector('.search-button').classList.remove('hide');
    },
