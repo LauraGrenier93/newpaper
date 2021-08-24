@@ -22,3 +22,5 @@ The use of the DOM to display the articles without router.
 $ git clone [git@github.com:LauraGrenier93/newpaper.git]
 
 $ cd ../path/to/the/file
+
+A API is to be associated with the newpaper project: [https://github.com/LauraGrenier93/newpaper-back]
