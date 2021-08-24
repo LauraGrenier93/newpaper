@@ -23,4 +23,4 @@ $ git clone [git@github.com:LauraGrenier93/newpaper.git]
 
 $ cd ../path/to/the/file
 
-A API is to be associated with the newpaper project: [https://github.com/LauraGrenier93/newpaper-back]
+A API is to be associated with the newpaper project: [https://github.com/LauraGrenier93/back-newpaper]
